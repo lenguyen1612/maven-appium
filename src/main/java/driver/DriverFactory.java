@@ -6,6 +6,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
@@ -16,12 +17,17 @@ public class DriverFactory {
     private static AndroidDriver<MobileElement> androidDriver;
 
     public static void startAppiumServer(){
-        AppiumServiceBuilder appiumServiceBuilder = new AppiumServiceBuilder();
+        try{
+            AppiumServiceBuilder appiumServiceBuilder = new AppiumServiceBuilder();
 //        appiumServiceBuilder.withIPAddress("127.0.0.1").usingAnyFreePort();
-        appiumServiceBuilder.withIPAddress("127.0.0.1").usingPort(4723);
+            appiumServiceBuilder.withIPAddress("127.0.0.1").usingPort(4723);
 
-        appiumServer = AppiumDriverLocalService.buildService(appiumServiceBuilder);
-        appiumServer.start();
+            appiumServer = AppiumDriverLocalService.buildService(appiumServiceBuilder);
+            appiumServer.start();
+        }catch (SessionNotCreatedException e){
+            stopAppiumServer();
+        }
+
 
     }
 
