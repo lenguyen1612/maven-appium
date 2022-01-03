@@ -1,6 +1,7 @@
 package driver;
 
 import caps.MobileCapabilityTypeEx;
+import flags.AndroidServerFlagEx;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -16,22 +17,23 @@ public class DriverFactory {
     private static AppiumDriverLocalService appiumServer;
     private static AndroidDriver<MobileElement> androidDriver;
 
-    public static void startAppiumServer(){
-        try{
+    public static void startAppiumServer() {
+        try {
             AppiumServiceBuilder appiumServiceBuilder = new AppiumServiceBuilder();
+            appiumServiceBuilder.withArgument(AndroidServerFlagEx.ALLOW_INSECURE, "chromedriver_autodownload");
 //        appiumServiceBuilder.withIPAddress("127.0.0.1").usingAnyFreePort();
             appiumServiceBuilder.withIPAddress("127.0.0.1").usingPort(4723);
 
             appiumServer = AppiumDriverLocalService.buildService(appiumServiceBuilder);
             appiumServer.start();
-        }catch (SessionNotCreatedException e){
+        } catch (SessionNotCreatedException e) {
             stopAppiumServer();
         }
 
 
     }
 
-    public static void stopAppiumServer(){
+    public static void stopAppiumServer() {
 //        appiumServer.stop();
         String killNodeWinCmd = "taskkill /F /IM node.exe";
         String killNodeLinuxCmd = "killall node";
@@ -39,19 +41,19 @@ public class DriverFactory {
         String killNodeCmd = System.getProperty("os.name").toLowerCase().startsWith("windows") ? killNodeWinCmd : killNodeLinuxCmd;
 
         Runtime runtime = Runtime.getRuntime();
-        try{
+        try {
             runtime.exec(killNodeCmd);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static AndroidDriver<MobileElement> getAndroidDriver(){
+    public static AndroidDriver<MobileElement> getAndroidDriver() {
         initAndroidDriver();
         return androidDriver;
     }
 
-    private static void initAndroidDriver(){
+    private static void initAndroidDriver() {
         try {
             // Setup DesiredCapabilities
             DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
