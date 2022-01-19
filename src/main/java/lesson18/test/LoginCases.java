@@ -14,7 +14,13 @@ public class LoginCases extends BaseTest {
     public void loginValid(LoginCred loginCred){
         LoginForm loginForm = new LoginForm(getDriverAndroid());
         loginForm.setData(loginCred).loginValid();
-//        Assert.assertTrue(true);
+    }
+
+    @Test
+    public void loginValid111(){
+        LoginForm loginForm = new LoginForm(getDriverAndroid());
+//        loginForm.setData(loginCred).loginValid();
+        Assert.assertTrue(false);
     }
 
     @DataProvider

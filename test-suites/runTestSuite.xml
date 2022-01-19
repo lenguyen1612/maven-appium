@@ -9,12 +9,12 @@
             <class name="lesson18.test.LoginCases" />
         </classes>
     </test>
-<!--    <test name="Test for generic_9">-->
-<!--        <parameter name="uuid" value="emulator-5556"></parameter>-->
-<!--        <parameter name="deviceName" value="generic_9"></parameter>-->
-<!--        <parameter name="systemPort" value="8400"></parameter>-->
-<!--        <classes>-->
-<!--            <class name="lesson18.test.test" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Test for generic_9">
+        <parameter name="uuid" value="emulator-5556"></parameter>
+        <parameter name="deviceName" value="generic_9"></parameter>
+        <parameter name="systemPort" value="8400"></parameter>
+        <classes>
+            <class name="lesson18.test.LoginCases" />
+        </classes>
+    </test>
 </suite>
