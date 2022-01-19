@@ -1,11 +1,20 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Suite1" verbose="1" >
-    <test name="Test TestNG">
+<suite name="Suite1" verbose="1"  parallel="tests" thread-count="10">
+    <test name="Test for android_2901">
+        <parameter name="uuid" value="emulator-5554"></parameter>
+        <parameter name="deviceName" value="android_2901"></parameter>
+        <parameter name="systemPort" value="8300"></parameter>
         <classes>
             <class name="lesson18.test.LoginCases" />
-            <class name="lesson18.test.LoginCases1" />
         </classes>
     </test>
-
+    <test name="Test for generic_9">
+        <parameter name="uuid" value="emulator-5556"></parameter>
+        <parameter name="deviceName" value="generic_9"></parameter>
+        <parameter name="systemPort" value="8400"></parameter>
+        <classes>
+            <class name="lesson18.test.LoginCases" />
+        </classes>
+    </test>
 </suite>
