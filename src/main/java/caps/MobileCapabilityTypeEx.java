@@ -8,4 +8,5 @@ public interface MobileCapabilityTypeEx extends MobileCapabilityType {
     String AUTOMATION_NAME = "uiautomator2";
     String APP_PACKAGE = "appPackage";
     String APP_ACTIVITY = "appActivity";
+    String SYSTEM_PORT = "systemPort";
 }

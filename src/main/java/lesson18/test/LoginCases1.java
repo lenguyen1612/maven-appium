@@ -11,13 +11,13 @@ public class LoginCases1 extends BaseTest {
 
     @Test(dataProvider = "loginCerd")
     public void loginValid(LoginCred loginCred){
-        LoginForm loginForm = new LoginForm(appiumDriver);
+        LoginForm loginForm = new LoginForm(getDriverAndroid());
         loginForm.setData(loginCred).loginValid();
     }
 
     @Test(dataProvider = "loginCerd")
     public void loginInValid(LoginCred loginCred){
-        LoginForm loginForm = new LoginForm(appiumDriver);
+        LoginForm loginForm = new LoginForm(getDriverAndroid());
         loginForm.setData(loginCred).loginValid();
     }
 
